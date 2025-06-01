@@ -20,7 +20,7 @@ export const StudyList = (props: StudyListType) => {
   };
   return (
     <div>
-      <h1>学習リスト</h1>
+      <h2>学習リスト</h2>
       {loading ? (
         <p>Loading...</p>
       ) : (

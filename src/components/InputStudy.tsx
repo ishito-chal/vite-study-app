@@ -68,6 +68,7 @@ export const InputStudy = (props: InputStudyType) => {
 
   return (
     <>
+      <h1>学習記録一覧</h1>
       <div style={styleFlex}>
         <p>学習内容</p>
         <input
