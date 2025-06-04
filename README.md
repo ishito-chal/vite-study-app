@@ -1,7 +1,13 @@
-# React + TypeScript + Vite
+# Study Record Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple application for recording your study progress built with React and Vite.
 
+Run it locally with:
+
+```bash
+npm install
+npm run dev
+```
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
