@@ -11,7 +11,7 @@ export const fetchStudy = async (props: FetchDataType) => {
   setLoading(true);
   const fetchData: StudyRecordType[] = await selectStudyRecord();
   if (fetchData === null) {
-    setLoading(false);
+    setLoading(false); // ensure loading state resets
     return;
   }
   setStudyRecords(fetchData);
