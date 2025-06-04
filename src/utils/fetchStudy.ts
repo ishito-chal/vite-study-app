@@ -20,7 +20,7 @@ export const fetchStudy = async (props: FetchDataType) => {
   setLoading(false);
 };
 
-const calcTotalTime = (fetchData: StudyRecordType[]) => {
+export const calcTotalTime = (fetchData: StudyRecordType[]) => {
   const totalTime: number = fetchData.reduce((sum, data) => sum + data.time, 0);
   return totalTime;
 };
