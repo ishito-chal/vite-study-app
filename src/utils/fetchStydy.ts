@@ -11,6 +11,7 @@ export const fetchStudy = async (props: FetchDataType) => {
   setLoading(true);
   const fetchData: StudyRecordType[] = await selectStudyRecord();
   if (fetchData === null) {
+    setLoading(false);
     return;
   }
   // console.log(Array.isArray(fetchData));
