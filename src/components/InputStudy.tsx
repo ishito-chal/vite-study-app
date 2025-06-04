@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { insertStudyRecord, StudyRecordType } from "../api/studyRecord";
-import { fetchStudy } from "../utils/fetchStydy";
+import { fetchStudy } from "../utils/fetchStudy";
 import { StudyList } from "./StudyList";
 
 export const InputStudy = () => {
