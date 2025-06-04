@@ -1,6 +1,7 @@
+import React from "react";
 import { deleteStudyRecord, StudyRecordType } from "../api/studyRecord";
 
-type StudyListType = {
+export type StudyListType = {
   loading: boolean;
   studyRecords: StudyRecordType[];
   setStudyRecords: React.Dispatch<React.SetStateAction<StudyRecordType[]>>;

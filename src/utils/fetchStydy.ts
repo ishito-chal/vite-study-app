@@ -13,8 +13,6 @@ export const fetchStudy = async (props: FetchDataType) => {
   if (fetchData === null) {
     return;
   }
-  // console.log(Array.isArray(fetchData));
-  console.log(fetchData);
   setStudyRecords(fetchData);
   setTotalTime(calcTotalTime(fetchData));
 

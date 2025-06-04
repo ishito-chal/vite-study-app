@@ -1,14 +1,13 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import { insertStudyRecord, StudyRecordType } from "../api/studyRecord";
 import { fetchStudy } from "../utils/fetchStydy";
+import { StudyList } from "./StudyList";
 
-type InputStudyType = {
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  setStudyRecords: React.Dispatch<React.SetStateAction<StudyRecordType[]>>;
-};
-
-export const InputStudy = (props: InputStudyType) => {
-  const { setLoading, setStudyRecords } = props;
+export const InputStudy = () => {
+  const [studyRecords, setStudyRecords] = useState<StudyRecordType[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
 
   const styleFlex = {
     display: "flex",
@@ -44,11 +43,12 @@ export const InputStudy = (props: InputStudyType) => {
     }
 
     const result = await addRecord();
-    console.log(result);
     if (result) {
       fetchStudy({ setLoading, setStudyRecords, setTotalTime });
 
       setNewRecord({ id: "", title: "", time: 0 });
+
+      setShowMessage(true);
     }
   };
 
@@ -66,20 +66,31 @@ export const InputStudy = (props: InputStudyType) => {
     fetchStudy({ setLoading, setStudyRecords, setTotalTime });
   }, []);
 
+  useEffect(() => {
+    if (showMessage) {
+      const timer = setTimeout(() => {
+        setShowMessage(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showMessage]);
+
   return (
     <>
       <h1>学習記録一覧</h1>
       <div style={styleFlex}>
-        <p>学習内容</p>
+        <label htmlFor="GakusyuNaiyo">学習内容</label>
         <input
+          id="GakusyuNaiyo"
           type="text"
           value={newRecord.title}
           onChange={onChangeGakusyuNaiyo}
         />
       </div>
       <div style={styleFlex}>
-        <p>学習時間</p>
+        <label htmlFor="GakusyuTime">学習時間</label>
         <input
+          id="GakusyuTime"
           type="number"
           value={newRecord.time}
           onChange={onChangeGakusyuTime}
@@ -88,9 +99,19 @@ export const InputStudy = (props: InputStudyType) => {
       </div>
       <p>入力されている学習内容:{newRecord.title}</p>
       <p>入力されている時間:{newRecord.time}時間</p>
-      <button onClick={onClickTouroku}>登録</button>
+      <div style={{ display: "flex" }}>
+        <button id="Touroku" onClick={onClickTouroku}>
+          登録
+        </button>
+        {showMessage && <p>登録に成功しました</p>}
+      </div>
       {validation && <p>入力されていない項目があります</p>}
       <p>合計時間：{totalTime}/1000(h)</p>
+      <StudyList
+        loading={loading}
+        studyRecords={studyRecords}
+        setStudyRecords={setStudyRecords}
+      />
     </>
   );
 };
