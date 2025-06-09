@@ -1,8 +1,5 @@
-import React from "react";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { InputStudy } from "./InputStudy";
-import { StudyRecordType } from "../api/studyRecord";
-import { StudyList, StudyListType } from "./StudyList";
 
 test("タイトルが正しく表示されている", () => {
   render(<InputStudy />);
