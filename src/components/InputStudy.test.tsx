@@ -1,6 +1,5 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { InputStudy } from "./InputStudy";
-import "react";
 
 test("タイトルが正しく表示されている", () => {
   render(<InputStudy />);
